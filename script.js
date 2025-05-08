@@ -1,38 +1,22 @@
-async function obfuscateCode() {
-  const input = document.getElementById("inputCode").value;
-  const lang = document.getElementById("language").value;
-  const output = document.getElementById("outputCode");
+function scramble() {
+  const type = document.getElementById('fileType').value;
+  let code = document.getElementById('codeInput').value;
 
-  if (!input.trim()) {
-    output.value = "Please paste your code.";
-    return;
+  if (type === 'js') {
+    code = code
+      .replace(/\/\/.*|\/\*[\s\S]*?\*\//g, '')
+      .replace(/\s{2,}/g, ' ')
+      .replace(/\n/g, '');
+    code = btoa(code); // Base64 for simple obfuscation
+    code = `eval(atob("${code}"))`;
   }
 
-  if (lang === "js") {
-    try {
-      const result = await Terser.minify(input);
-      output.value = result.code || "Obfuscation failed.";
-    } catch (e) {
-      output.value = "Error: " + e.message;
-    }
-  } else if (lang === "html") {
-    output.value = input
-      .replace(/\n/g, "")
-      .replace(/\s{2,}/g, " ")
-      .replace(/> </g, "><")
-      .trim();
-  } else if (lang === "css") {
-    output.value = input
-      .replace(/\s+/g, " ")
-      .replace(/\/\*.*?\*\//g, "")
-      .replace(/\s*([{}:;,])\s*/g, "$1")
-      .trim();
+  if (type === 'html' || type === 'css') {
+    code = code
+      .replace(/\/\*[\s\S]*?\*\//g, '')
+      .replace(/\s{2,}/g, ' ')
+      .replace(/\n/g, '');
   }
-}
 
-function copyCode() {
-  const output = document.getElementById("outputCode");
-  output.select();
-  document.execCommand("copy");
-  alert("Code copied!");
+  document.getElementById('output').value = code.trim();
 }
