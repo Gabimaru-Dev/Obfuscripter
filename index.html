@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Code Obfuscator</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/terser@5.27.0/dist/bundle.min.js"></script>
+</head>
+<body>
+  <header>
+    <img src="https://cdn-icons-png.flaticon.com/512/4507/4507815.png" alt="Logo" />
+    <h1>Code Obfuscator</h1>
+    <p>Minify your JavaScript, HTML, or CSS in one click</p>
+  </header>
+
+  <div class="container">
+    <select id="language">
+      <option value="js">JavaScript</option>
+      <option value="html">HTML</option>
+      <option value="css">CSS</option>
+    </select>
+    <textarea id="inputCode" placeholder="Paste your code here..."></textarea>
+    <button onclick="obfuscateCode()">Obfuscate / Minify</button>
+    <textarea id="outputCode" readonly placeholder="Obfuscated code will appear here..."></textarea>
+    <button onclick="copyCode()">Copy Code</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
