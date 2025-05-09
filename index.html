@@ -13,15 +13,27 @@
   </header>
 
   <main>
-    <select id="type">
-      <option value="js">JavaScript</option>
-      <option value="css">CSS</option>
-      <option value="html">HTML</option>
-    </select>
+    <section class="controls">
+      <label for="type">Select Code Type:</label>
+      <select id="type">
+        <option value="js">JavaScript</option>
+        <option value="css">CSS</option>
+        <option value="html">HTML</option>
+      </select>
+    </section>
 
-    <textarea id="input" placeholder="Paste your code here..."></textarea>
+    <section>
+      <label for="input">Your Code:</label>
+      <textarea id="input" placeholder="Paste your code here..."></textarea>
+    </section>
+
     <button id="encryptBtn">Encrypt</button>
-    <textarea id="output" placeholder="Encrypted code shows here..." readonly></textarea>
+
+    <section>
+      <label for="output">Encrypted Code:</label>
+      <textarea id="output" placeholder="Encrypted code shows here..." readonly></textarea>
+      <button onclick="copyCode()">Copy Encrypted Code</button>
+    </section>
   </main>
 
   <footer>
