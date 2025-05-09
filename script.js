@@ -1,22 +1,28 @@
-function scramble() {
-  const type = document.getElementById('fileType').value;
-  let code = document.getElementById('codeInput').value;
+document.getElementById("encryptBtn").addEventListener("click", () => {
+  const type = document.getElementById("type").value;
+  const code = document.getElementById("input").value.trim();
+  const output = document.getElementById("output");
 
-  if (type === 'js') {
-    code = code
-      .replace(/\/\/.*|\/\*[\s\S]*?\*\//g, '')
-      .replace(/\s{2,}/g, ' ')
-      .replace(/\n/g, '');
-    code = btoa(code); // Base64 for simple obfuscation
-    code = `eval(atob("${code}"))`;
+  let result = "";
+
+  if (!code) return (output.value = "Drop some code first...");
+
+  if (type === "js") {
+    result = `eval(function(p,a,c,k,e,d){e=function(c){return c.toString(36)};` +
+      `if(!''.replace(/^/,String)){while(c--)d[c.toString(a)]=k[c]||c.toString(a);` +
+      `k=[function(e){return d[e]}];e=function(){return'\\\\w+'};c=1;};` +
+      `while(c--)if(k[c])p=p.replace(new RegExp('\\\\b'+e(c)+'\\\\b','g'),k[c]);` +
+      `return p;}('${btoa(code)}',36,36,'|'.split('|'),0,{}))`;
   }
 
-  if (type === 'html' || type === 'css') {
-    code = code
-      .replace(/\/\*[\s\S]*?\*\//g, '')
-      .replace(/\s{2,}/g, ' ')
-      .replace(/\n/g, '');
+  else if (type === "css") {
+    result = `<style>${code.replace(/[\n\r]+/g, "").replace(/\s+/g, " ")}</style>`;
   }
 
-  document.getElementById('output').value = code.trim();
-}
+  else if (type === "html") {
+    const encoded = encodeURIComponent(code);
+    result = `<script>eval(unescape('${encoded}'))</script>`;
+  }
+
+  output.value = result;
+});
