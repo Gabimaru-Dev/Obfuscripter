@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Code Encryptor</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code Encryptor | Gabimaru</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Code Encrpytor</h1>
-  <select id="fileType">
-    <option value="js">JavaScript</option>
-    <option value="html">HTML</option>
-    <option value="css">CSS</option>
-  </select>
+  <header>
+    <h1>Code Encryptor</h1>
+    <p>By Ayodele David (Gabimaru)</p>
+  </header>
 
-  <textarea id="codeInput" placeholder="Paste your code here..."></textarea>
-  <button onclick="scramble()">Encrypt Code</button>
-  <textarea id="output" placeholder="Encrypted code..."></textarea>
+  <main>
+    <select id="type">
+      <option value="js">JavaScript</option>
+      <option value="css">CSS</option>
+      <option value="html">HTML</option>
+    </select>
+
+    <textarea id="input" placeholder="Paste your code here..."></textarea>
+    <button id="encryptBtn">Encrypt</button>
+    <textarea id="output" placeholder="Encrypted code shows here..." readonly></textarea>
+  </main>
+
+  <footer>
+    <p>Respect the name — Gabimaru.</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
