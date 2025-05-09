@@ -26,3 +26,9 @@ document.getElementById("encryptBtn").addEventListener("click", () => {
 
   output.value = result;
 });
+function copyCode() {
+  const output = document.getElementById('output');
+  output.select();
+  document.execCommand('copy');
+  alert('Encrypted code copied to clipboard!');
+} 
