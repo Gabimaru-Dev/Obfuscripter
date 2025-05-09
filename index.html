@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Code Encryptor | Gabimaru</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/javascript-obfuscator@4.0.0/dist/index.browser.js"></script>
 </head>
 <body>
   <header>
@@ -13,27 +14,20 @@
   </header>
 
   <main>
-    <section class="controls">
-      <label for="type">Select Code Type:</label>
-      <select id="type">
-        <option value="js">JavaScript</option>
-        <option value="css">CSS</option>
-        <option value="html">HTML</option>
-      </select>
-    </section>
+    <select id="type">
+      <option value="js">JavaScript</option>
+      <option value="css">CSS</option>
+      <option value="html">HTML</option>
+    </select>
 
-    <section>
-      <label for="input">Your Code:</label>
-      <textarea id="input" placeholder="Paste your code here..."></textarea>
-    </section>
+    <textarea id="input" placeholder="Paste your code here..."></textarea>
 
-    <button id="encryptBtn">Encrypt</button>
-
-    <section>
-      <label for="output">Encrypted Code:</label>
-      <textarea id="output" placeholder="Encrypted code shows here..." readonly></textarea>
+    <div class="actions">
+      <button id="encryptBtn">Encrypt</button>
       <button onclick="copyCode()">Copy Encrypted Code</button>
-    </section>
+    </div>
+
+    <textarea id="output" placeholder="Encrypted code shows here..." readonly></textarea>
   </main>
 
   <footer>
