@@ -33,7 +33,7 @@ main {
   gap: 1em;
 }
 
-select, textarea, button {
+select, textarea, button, input[type="file"] {
   width: 90%;
   max-width: 800px;
   font-size: 1em;
