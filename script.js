@@ -3,6 +3,18 @@ const output = document.getElementById("output");
 const encryptBtn = document.getElementById("encryptBtn");
 const copyBtn = document.getElementById("copyBtn");
 const type = document.getElementById("type");
+const fileInput = document.getElementById("fileInput");
+
+fileInput.addEventListener("change", () => {
+  const file = fileInput.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    input.value = e.target.result;
+  };
+  reader.readAsText(file);
+});
 
 encryptBtn.addEventListener("click", () => {
   const code = input.value;
